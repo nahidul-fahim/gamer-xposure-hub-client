@@ -13,7 +13,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        primary: "'Asap', sans-serif",
+        primary: "'Poppins', sans-serif",
       }
     },
   },

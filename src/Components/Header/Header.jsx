@@ -1,20 +1,24 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 
 const Header = () => {
 
+    let location = useLocation();
+
     const links = <>
-        <NavLink className="text-[white] font-bold">Home</NavLink>
-    </>
+        <NavLink className={`${location.pathname === "/" ? "text-white" : "text-black"} font-bold`}>Home</NavLink>
+    </>;
+
+
 
     return (
-        <div className="container mx-auto p-5 absolute z-10">
+        <div className={`container mx-auto p-5 absolute z-10 ${location.pathname === "/" ? 'absolute' : 'relative'}`}>
 
             {/* div for logged in user information */}
             <div className="flex justify-end items-center">
                 <div>
-                    <button className="bg-main text-white px-3 py-1 font-medium rounded-l">Login</button>
-                    <button className="bg-main text-white px-3 py-1 font-medium rounded-r border-l-[1px] border-[#868686]">Sign up</button>
+                    <Link to="/login"><button className="bg-main text-white px-3 py-1 font-medium rounded-l hover:text-main hover:bg-[white] duration-300">Login</button></Link>
+                    <Link to="/signup"><button className="bg-main text-white px-3 py-1 font-medium rounded-r border-l-[1px] border-[#868686] hover:text-main hover:bg-[white] duration-300">Sign up</button></Link>
                 </div>
             </div>
 
@@ -30,7 +34,7 @@ const Header = () => {
                                 {links}
                             </ul>
                         </div>
-                        <a href="/"><img className="w-[40%]" src="https://i.ibb.co/6PYp5wm/logo.png" alt="website logo" /></a>
+                        <img className="w-[20%]" src={location.pathname === "/" ? "https://i.ibb.co/m5dmMjf/logo.png" : "https://i.ibb.co/dfpYy8y/G-1.png"} alt="website logo" />
                     </div>
                     <div className="navbar-end hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">
