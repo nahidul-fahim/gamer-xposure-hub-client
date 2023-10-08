@@ -6,8 +6,10 @@ export default {
   ],
   theme: {
     colors: {
-      'primary': '#00296b',
-      'secondary': '#fdc500',
+      'main': '#00296b',
+      'sub': '#fdc500',
+      'white': 'white',
+      'black': 'black'
     },
     extend: {
       fontFamily: {
