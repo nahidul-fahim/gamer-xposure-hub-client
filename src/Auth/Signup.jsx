@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { BsFillEyeFill, BsFillEyeSlashFill, BsGoogle } from 'react-icons/bs';
 import { useContext, useState } from "react";
 import { AuthContext } from "../Context/AuthProvider";
-
 import { ToastContainer, toast, Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

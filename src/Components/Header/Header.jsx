@@ -1,9 +1,25 @@
+import { useContext } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider";
 
 
 const Header = () => {
 
     let location = useLocation();
+
+    const { signOutUser, loggedInUser } = useContext(AuthContext);
+
+    console.log("Curent logged in user:", loggedInUser);
+
+    const handleSignOut = () => {
+        signOutUser()
+            .then(() => {
+                console.log("Sign out successfull")
+            })
+            .catch(() => {
+                console.log("error in sign out")
+            })
+    }
 
     const links = <>
         <NavLink className={`${location.pathname === "/" ? "text-white" : "text-black"} font-bold`}>Home</NavLink>
@@ -16,10 +32,15 @@ const Header = () => {
 
             {/* div for logged in user information */}
             <div className="flex justify-end items-center">
-                <div>
-                    <Link to="/login"><button className="bg-main text-white px-3 py-1 text-[14px] font-medium rounded-l-lg hover:text-main hover:bg-[white] duration-300">Login</button></Link>
-                    <Link to="/signup"><button className="bg-main text-white px-3 py-1 text-[14px] font-medium rounded-r-lg border-l-[1px] border-[#868686] hover:text-main hover:bg-[white] duration-300">Sign up</button></Link>
-                </div>
+
+                {
+                    loggedInUser ? <button onClick={handleSignOut} className="bg-main text-white px-4 py-2 text-[14px] font-medium rounded-lg hover:text-main hover:bg-[white] duration-300">Sign out</button> :
+                        <div>
+                            <Link to="/login"><button className="bg-main text-white px-4 py-2 text-[14px] font-medium rounded-l-lg hover:text-main hover:bg-[white] duration-300">Login</button></Link>
+                            <Link to="/signup"><button className="bg-main text-white px-4 py-2 text-[14px] font-medium rounded-r-lg border-l-[1px] border-[#868686] hover:text-main hover:bg-[white] duration-300">Sign up</button></Link>
+                        </div>
+                }
+
             </div>
 
             {/* Nav bar */}

@@ -1,6 +1,6 @@
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 import app from "../Firebase/Firebase.config";
-import { createContext } from "react";
+import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 
 
@@ -14,21 +14,40 @@ export const AuthContext = createContext('');
 
 const AuthProvider = ({children}) => {
 
+    const [loggedInUser, setLoggedInUser] = useState('')
+
 
     // email-password sign up function
     const createNewUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password);
-    }
+    };
 
 
     //Google sign up function
     const createNewUserByGoogle = () => {
         return signInWithPopup(auth, googleProvider);
+    };
+
+
+    //Sign out
+    const signOutUser = () => {
+        return signOut(auth);
     }
 
+
+    //keep trace on logged in user
+
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, user => {
+            setLoggedInUser(user)
+        });
+        return () => {
+            unSubscribe();
+        }
+    }, [])
     
 
-    const authInfo = {createNewUser, createNewUserByGoogle };
+    const authInfo = {createNewUser, createNewUserByGoogle, signOutUser, loggedInUser };
 
     return (
         <AuthContext.Provider value = {authInfo}>

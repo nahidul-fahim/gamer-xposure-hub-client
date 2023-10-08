@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
-import { BsFillEyeFill, BsFillEyeSlashFill } from 'react-icons/bs';
-import { useState } from "react";
+import { BsFillEyeFill, BsFillEyeSlashFill, BsGoogle } from 'react-icons/bs';
+import { useContext, useState } from "react";
+import { AuthContext } from "../Context/AuthProvider";
 
 
 
 const Login = () => {
+
+    const {createNewUserByGoogle} = useContext(AuthContext);
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -12,6 +15,16 @@ const Login = () => {
         setShowPassword(!showPassword)
     }
 
+
+    const handleGoogleSignIn = () => {
+        createNewUserByGoogle()
+            .then(result => {
+                console.log(result.user)
+            })
+            .catch(error => {
+                console.log(error.code)
+            })
+    }
 
 
     return (
@@ -35,10 +48,17 @@ const Login = () => {
                     </form>
                 </div>
 
-                <div className="mt-5 flex justify-center items-center gap-1">
-                    <p className="text-center font-medium">{'Dont\'t'} have an account?</p>
-                    <Link to="/signup" className="font-semibold border-t-2 border-t-[#ffffff00] border-b-2 border-sub hover:bg-sub px-2 py-1 hover:border-t-2 duration-300">Sign up</Link>
+
+                <div className="mt-10 flex justify-center items-center flex-col">
+                    <button onClick={handleGoogleSignIn} className="bg-[#1fb3f8] px-4 py-2 rounded text-white font-medium hover:bg-sub duration-300 flex justify-center items-center gap-2"><BsGoogle /> Sign in using Google</button>
+                    <div className="mt-5 flex justify-center items-center gap-1">
+                        <p className="text-center font-medium">{'Dont\'t'} have an account?</p>
+                        <Link to="/signup" className="font-semibold border-t-2 border-t-[#ffffff00] border-b-2 border-sub hover:bg-sub px-2 py-1 hover:border-t-2 duration-300">Sign up</Link>
+                    </div>
                 </div>
+
+
+
 
             </div>
         </div>
