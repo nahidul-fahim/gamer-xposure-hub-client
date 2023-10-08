@@ -17,8 +17,8 @@ const Header = () => {
             {/* div for logged in user information */}
             <div className="flex justify-end items-center">
                 <div>
-                    <Link to="/login"><button className="bg-main text-white px-3 py-1 font-medium rounded-l hover:text-main hover:bg-[white] duration-300">Login</button></Link>
-                    <Link to="/signup"><button className="bg-main text-white px-3 py-1 font-medium rounded-r border-l-[1px] border-[#868686] hover:text-main hover:bg-[white] duration-300">Sign up</button></Link>
+                    <Link to="/login"><button className="bg-main text-white px-3 py-1 text-[14px] font-medium rounded-l-lg hover:text-main hover:bg-[white] duration-300">Login</button></Link>
+                    <Link to="/signup"><button className="bg-main text-white px-3 py-1 text-[14px] font-medium rounded-r-lg border-l-[1px] border-[#868686] hover:text-main hover:bg-[white] duration-300">Sign up</button></Link>
                 </div>
             </div>
 
@@ -34,7 +34,7 @@ const Header = () => {
                                 {links}
                             </ul>
                         </div>
-                        <img className="w-[20%]" src={location.pathname === "/" ? "https://i.ibb.co/m5dmMjf/logo.png" : "https://i.ibb.co/dfpYy8y/G-1.png"} alt="website logo" />
+                        <img className="w-[50%] md:w-[30%] lg:w-[20%]" src={location.pathname === "/" ? "https://i.ibb.co/m5dmMjf/logo.png" : "https://i.ibb.co/dfpYy8y/G-1.png"} alt="website logo" />
                     </div>
                     <div className="navbar-end hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">
