@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBIuDwmRyTt5ubIMi-d0Y52wC4fPs5WiFo",
-  authDomain: "gamer-xposure-hub.firebaseapp.com",
-  projectId: "gamer-xposure-hub",
-  storageBucket: "gamer-xposure-hub.appspot.com",
-  messagingSenderId: "743941092878",
-  appId: "1:743941092878:web:0867d1f0f48d9cf33c2e5f"
+  apiKey: import.meta.env.VITE_APIKEY, 
+  authDomain: import.meta.env.VITE_AUTHDOMAIN, 
+  projectId: import.meta.env.VITE_PROJECTID, 
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET, 
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID, 
+  appId: import.meta.env.VITE_APPID, 
 };
 
 // Initialize Firebase
