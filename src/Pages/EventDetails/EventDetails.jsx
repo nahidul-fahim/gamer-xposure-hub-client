@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { ContentContext } from "../../WebsiteContent/ContentProvider";
 import { useParams } from "react-router-dom";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 const EventDetails = () => {
@@ -18,6 +20,8 @@ const EventDetails = () => {
     const { name, article_img, price, place, long_desc } = currentContent;
 
 
+    AOS.init();
+
     return (
         <div>
             <div className="h-[500px] w-full flex justify-start items-center p-10"
@@ -29,7 +33,15 @@ const EventDetails = () => {
                 }}>
                 <div className="space-y-3">
                     <h2 className="text-5xl lg:text-6xl font-extrabold text-white container mx-auto">{name}</h2>
-                    <div className="bg-sub h-7 w-[150px] lg:w-[250px]">
+                    <div className="bg-sub h-7 w-[150px] lg:w-[250px]"
+                        data-aos="fade-left"
+                        data-aos-offset="50"
+                        data-aos-delay="50"
+                        data-aos-duration="2000"
+                        data-aos-easing="ease"
+                        data-aos-mirror="true"
+                        data-aos-once="false"
+                        data-aos-anchor-placement="top-center">
                     </div>
                 </div>
             </div>
@@ -43,10 +55,10 @@ const EventDetails = () => {
 
                 <div className="lg:w-[30%]">
                     <div className="rounded-t-lg border-2 p-7 lg:p-10 border-sub flex justify-center items-center">
-                        <h3 className="text-xl font-bold text-center">Price: <br /> <span className="text-sub text-3xl">${price}</span></h3>
+                        <h3 className="text-xl font-bold text-center text-main">Price: <br /> <span className="text-sub text-3xl">${price}</span></h3>
                     </div>
                     <div className="rounded-b-lg border-b-2 border-x-2 p-7 lg:p-10 border-sub flex justify-center items-center">
-                        <h3 className="text-xl font-bold text-center">Venue: <br /> <span className="text-sub text-3xl">${place}</span></h3>
+                        <h3 className="text-xl font-bold text-center text-main">Venue: <br /> <span className="text-sub text-3xl">{place}</span></h3>
                     </div>
                 </div>
 

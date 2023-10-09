@@ -11,7 +11,7 @@ const Signup = () => {
 
     //Context declaration
 
-    const { createNewUser, createNewUserByGoogle, updateProfileInfo } = useContext(AuthContext);
+    const { createNewUser, createNewUserByGoogle, updateProfileInfo, signOutUser } = useContext(AuthContext);
 
 
 
@@ -51,6 +51,7 @@ const Signup = () => {
             .then(result => {
                 successNotify();
                 const currentUsersInfo = result.user;
+                signOutUser();
                 updateProfileInfo(currentUsersInfo, username, photo)
             })
             .catch(error => {
@@ -136,7 +137,8 @@ const Signup = () => {
                         }
                     </div>
 
-                    <input required type="file" name="image" accept="image/*" id="image" className="focus:outline-none border-b-[1px] pb-2 border-[lightgray] focus:border-main  transition-all duration-500" />
+                    <input required type="text" name="image" placeholder="Enter image URL" id="image" className="focus:outline-none border-b-[1px] pb-2 border-[lightgray] focus:border-main  transition-all duration-500 w-full" />
+
 
                     <input type="submit" value="Sign up" className="bg-main px-4 py-2 rounded text-white font-medium hover:bg-sub duration-300 w-full" />
 

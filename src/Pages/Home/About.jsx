@@ -1,8 +1,11 @@
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const About = () => {
 
     const aboutBg = 'https://i.ibb.co/FK8cGf9/war-background.png';
+
+    AOS.init();
 
     return (
         <div className="md:py-14 md:px-[5rem] p-8 mt-[5rem]"
@@ -15,11 +18,27 @@ const About = () => {
 
             <div className="flex lg:flex-row flex-col justify-center lg:justify-around items-center gap-[80px] container mx-auto">
 
-                <div className="lg:w-1/2">
+                <div className="lg:w-1/2"
+                    data-aos="fade-right"
+                    data-aos-offset="50"
+                    data-aos-delay="50"
+                    data-aos-duration="1000"
+                    data-aos-easing="ease"
+                    data-aos-mirror="true"
+                    data-aos-once="false"
+                    data-aos-anchor-placement="top-center">
                     <img src="https://i.ibb.co/NSb56g2/gamer-team.png" alt="A gaming team" className="rounded" />
                 </div>
 
-                <div className="lg:w-1/2 space-y-7">
+                <div className="lg:w-1/2 space-y-7"
+                    data-aos="fade-left"
+                    data-aos-offset="50"
+                    data-aos-delay="50"
+                    data-aos-duration="1000"
+                    data-aos-easing="ease"
+                    data-aos-mirror="true"
+                    data-aos-once="false"
+                    data-aos-anchor-placement="top-center">
                     <div className="flex md:flex-row flex-col justify-center items-center gap-2 md:gap-4">
                         <h2 className="text-center text-main text-5xl font-extrabold">ABOUT THE <span className="text-sub">GXH</span></h2>
                         <div className="w-[130px] md:w-[70px] h-full bg-sub">.</div>
