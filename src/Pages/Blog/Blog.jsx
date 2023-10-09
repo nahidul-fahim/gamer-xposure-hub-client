@@ -31,7 +31,7 @@ const Blog = () => {
                 </div>
             </div>
 
-            <div className="grid grid-cols-2 mt-[5rem] container mx-auto p-5 gap-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 mt-[5rem] container mx-auto p-5 gap-10">
                 {
                     blogData.map(singleBlog => <SingleBlog
                     key={singleBlog.id}

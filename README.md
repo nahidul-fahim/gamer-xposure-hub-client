@@ -1,8 +1,10 @@
-# React + Vite
+# Website name: Gamer Xposure Hub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Live link: https://gamer-xposure-hub.web.app/
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# 5 features of the website
+### 1. The website has sign up & login option.
+### 2. There are two private routes, which cannot be accessed without logging into the website.
+### 3. In the home route, whenever "Explore details" buttons are clicked, it requires the user to be logged in due to view the detail page.
+### 4. When a user is logged in, user's photo and name is displayed on the header.
+### 5. There is beautiful animation in the homepage.

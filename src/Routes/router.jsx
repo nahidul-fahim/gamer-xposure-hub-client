@@ -7,6 +7,7 @@ import Login from "../Auth/Login";
 import EventDetails from "../Pages/EventDetails/EventDetails";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Blog from "../Pages/Blog/Blog";
+import BuyTicket from "../Pages/BuyTicket/BuyTicket";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
         {
           path: "/blog",
           element: <PrivateRoute><Blog /></PrivateRoute>
+        },
+        {
+          path: "/ticket",
+          element: <PrivateRoute><BuyTicket /></PrivateRoute>
         }
       ]
     },
