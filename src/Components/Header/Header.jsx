@@ -9,7 +9,6 @@ const Header = () => {
 
     const { signOutUser, currentUser } = useContext(AuthContext);
 
-    console.log(currentUser);
 
     const handleSignOut = () => {
         signOutUser()
@@ -22,13 +21,13 @@ const Header = () => {
     }
 
     const links = <>
-        <NavLink className={`${location.pathname === "/" ? "text-white" : "text-black"} font-bold`}>Home</NavLink>
+        <NavLink className={`${location.pathname === "/login" || location.pathname === "/signup" ? "text-black" : "text-white"} font-bold`}>Home</NavLink>
     </>;
 
 
 
     return (
-        <div className={`container mx-auto p-5 absolute z-10 ${location.pathname === "/" ? 'absolute' : 'relative'}`}>
+        <div className={`container mx-auto p-5 absolute z-10 ${location.pathname === "/login" || location.pathname === "/signup" ? 'relative' : 'absolute'}`}>
 
             {/* div for logged in user information */}
             <div className="flex justify-end items-center">
@@ -38,7 +37,7 @@ const Header = () => {
                         <div className="flex justify-end items-center gap-x-3">
                             <img src={currentUser?.photoURL} alt="" className="w-[35px] h-[35px] rounded-full bg-cover"/>
                             <p className="text-[12px] md:text-[13px] lg:text-[14px] font-semibold text-[gray]">{currentUser?.displayName}</p>
-                            <button onClick={handleSignOut} className="bg-main text-white px-4 py-2 text-[14px] font-medium rounded-lg hover:text-main hover:bg-[white] duration-300">Sign out</button>
+                            <button onClick={handleSignOut} className="bg-main text-white px-4 py-2 text-[14px] font-medium rounded-lg hover:text-main hover:bg-[white] duration-300">Log Out</button>
                         </div>
                         :
                         <div>
@@ -61,7 +60,7 @@ const Header = () => {
                                 {links}
                             </ul>
                         </div>
-                        <img className="w-[50%] md:w-[30%] lg:w-[20%]" src={location.pathname === "/" ? "https://i.ibb.co/m5dmMjf/logo.png" : "https://i.ibb.co/dfpYy8y/G-1.png"} alt="website logo" />
+                        <img className="w-[50%] md:w-[30%] lg:w-[20%]" src={location.pathname === "/login" || location.pathname === "/signup" ? "https://i.ibb.co/dfpYy8y/G-1.png" : "https://i.ibb.co/m5dmMjf/logo.png"} alt="website logo" />
                     </div>
                     <div className="navbar-end hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">

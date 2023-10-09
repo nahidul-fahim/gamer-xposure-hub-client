@@ -6,8 +6,6 @@ import PropTypes from 'prop-types';
 export const ContentContext = createContext('');
 
 
-
-
 const ContentProvider = ({children}) => {
 
     const [websiteContents, setWebsiteContents] = useState('');

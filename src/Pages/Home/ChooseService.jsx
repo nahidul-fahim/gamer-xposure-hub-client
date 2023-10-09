@@ -8,15 +8,8 @@ const ChooseService = () => {
 
     const {websiteContents, loading} = useContext(ContentContext);
 
-    const result = Array.isArray(websiteContents);
-
     if (loading) {
         return <span className="loading loading-dots loading-lg"></span>
-    }
-    else {
-        console.log("loading checking after condition:" ,loading);
-        console.log("Website contents:", websiteContents);
-        console.log( "checking array:" ,result);
     }
 
 

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const SingleService = ({ websiteContent }) => {
 
-    const { name, image, short_desc, price } = websiteContent;
+    const { name, image, short_desc, price, path } = websiteContent;
 
 
     return (
@@ -19,7 +19,7 @@ const SingleService = ({ websiteContent }) => {
             <h3 className="text-3xl font-bold text-sub">{name}</h3>
             <p className="text-white text-[14px] leading-8">{short_desc}</p>
             <h3 className="text-xl font-semibold text-sub">Entry fee: <span className="text-white">${price}</span></h3>
-            <Link><button className="text-[18px] font-medium px-5 py-2 bg-sub mt-3 rounded text-black hover:shadow-[0_0_70px_white] duration-300 hover:bg-white hover:text-main">Explore details</button></Link>
+            <Link to={path}><button className="text-[18px] font-medium px-5 py-2 bg-sub mt-3 rounded text-black hover:shadow-[0_0_70px_white] duration-300 hover:bg-white hover:text-main">Explore details</button></Link>
         </div >
     );
 };
