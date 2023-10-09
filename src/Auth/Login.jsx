@@ -2,29 +2,106 @@ import { Link } from "react-router-dom";
 import { BsFillEyeFill, BsFillEyeSlashFill, BsGoogle } from 'react-icons/bs';
 import { useContext, useState } from "react";
 import { AuthContext } from "../Context/AuthProvider";
+import { ToastContainer, toast, Zoom } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
 const Login = () => {
 
-    const {createNewUserByGoogle} = useContext(AuthContext);
+    const { createNewUserByGoogle, accessExistingUser } = useContext(AuthContext);
 
     const [showPassword, setShowPassword] = useState(false);
+
+
+    // Toggle between show password and hide password
 
     const handleShowPassword = () => {
         setShowPassword(!showPassword)
     }
 
 
+    //Login using email-password
+
+    const handleLogIn = e => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        accessExistingUser(email, password)
+            .then(result => {
+                const successfulLogin = result.user;
+                successNotify();
+                console.log(successfulLogin);
+            })
+            .catch(error => {
+                const errorMessage = error.message;
+                const errorCode = error.code;
+                failedNotify();
+                console.log(errorMessage, errorCode)
+            })
+    }
+
+
+    //Sign in using Google 
+
     const handleGoogleSignIn = () => {
         createNewUserByGoogle()
             .then(result => {
+                successNotify();
                 console.log(result.user)
             })
             .catch(error => {
+                googleFailedNotify();
                 console.log(error.code)
             })
-    }
+    };
+
+
+    // Success message for successful login
+
+    const successNotify = () => toast.success('Login successful!', {
+        position: "top-center",
+        autoClose: 1500,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "colored",
+        transition: Zoom,
+    });
+
+
+    // Failed notification for failed login (email-password)
+
+    const failedNotify = () => toast.error('Your email and password do not match. Please try again.', {
+        position: "top-center",
+        autoClose: 1500,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "colored",
+        transition: Zoom,
+    });
+
+
+
+    // Failed notification for Google sign in
+
+    const googleFailedNotify = () => toast.error('Something went wrong. Please try again..', {
+        position: "top-center",
+        autoClose: 1500,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "colored",
+        transition: Zoom,
+    });
+
 
 
     return (
@@ -34,7 +111,7 @@ const Login = () => {
                 <div className="space-y-14 flex flex-col justify-center items-center">
                     <h2 className="text-3xl text-main font-bold text-center">Login to your account</h2>
 
-                    <form className="flex flex-col justify-center items-center w-full md:w-2/3 lg:w-1/3 space-y-7 lg:space-y-10 px-10">
+                    <form onSubmit={handleLogIn} className="flex flex-col justify-center items-center w-full md:w-2/3 lg:w-1/3 space-y-7 lg:space-y-10 px-10">
 
                         <input type="email" name="email" placeholder="Email address" id="eamil" className="focus:outline-none border-b-[1px] pb-2 border-[lightgray] focus:border-main  transition-all duration-500 w-full" />
 
@@ -44,6 +121,8 @@ const Login = () => {
                         </div>
 
                         <input type="submit" value="Login" className="bg-main px-4 py-2 rounded text-white font-medium hover:bg-sub duration-300 w-full" />
+
+                        <ToastContainer closeButton={false} />
 
                     </form>
                 </div>

@@ -9,8 +9,6 @@ const Header = () => {
 
     const { signOutUser, loggedInUser } = useContext(AuthContext);
 
-    console.log("Curent logged in user:", loggedInUser);
-
     const handleSignOut = () => {
         signOutUser()
             .then(() => {
