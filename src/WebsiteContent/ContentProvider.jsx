@@ -5,18 +5,25 @@ import PropTypes from 'prop-types';
 
 export const ContentContext = createContext('');
 
+
+
+
 const ContentProvider = ({children}) => {
 
-    const [websiteContents, setWebsiteContents] = useState('')
+    const [websiteContents, setWebsiteContents] = useState('');
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch('data.json')
         .then(res => res.json())
-        .then(data => setWebsiteContents(data))
+        .then(data => {
+            setWebsiteContents(data);
+            setLoading(false);
+        })
     }, [])
 
 
-    const contentInfo = {websiteContents};
+    const contentInfo = {websiteContents, loading};
 
     return (
         <ContentContext.Provider value={contentInfo}>

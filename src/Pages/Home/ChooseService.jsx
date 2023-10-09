@@ -6,27 +6,34 @@ import SingleService from "./SingleService";
 
 const ChooseService = () => {
 
-    const {websiteContents} = useContext(ContentContext);
+    const {websiteContents, loading} = useContext(ContentContext);
 
     const result = Array.isArray(websiteContents);
 
-    console.log( "checking array:" ,result);
+    if (loading) {
+        return <span className="loading loading-dots loading-lg"></span>
+    }
+    else {
+        console.log("loading checking after condition:" ,loading);
+        console.log("Website contents:", websiteContents);
+        console.log( "checking array:" ,result);
+    }
 
 
     return (
-        <div className="container mx-auto p-5 mt-[3rem] md:mt-[5rem]">
+        <div className="container mx-auto p-5 mt-[3rem] md:mt-[5rem] space-y-[3rem]">
             <div className="flex md:flex-row flex-col justify-center items-center gap-2 md:gap-4">
                 <h2 className="text-center text-sub text-5xl font-extrabold">CHOOSE YOUR <span className="text-main">STAGE</span></h2>
                 <div className="w-[150px] h-full bg-main">.</div>
             </div>
 
-            <div>
-                {/* {
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                {
                     websiteContents.map(websiteContent => <SingleService 
                     key={websiteContent.id}
                     websiteContent={websiteContent}>
                     </SingleService>)
-                } */}
+                }
             </div>
         </div>
     );
