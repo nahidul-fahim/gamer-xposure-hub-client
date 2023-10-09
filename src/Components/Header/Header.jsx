@@ -7,7 +7,9 @@ const Header = () => {
 
     let location = useLocation();
 
-    const { signOutUser, loggedInUser } = useContext(AuthContext);
+    const { signOutUser, currentUser } = useContext(AuthContext);
+
+    console.log(currentUser);
 
     const handleSignOut = () => {
         signOutUser()
@@ -32,7 +34,13 @@ const Header = () => {
             <div className="flex justify-end items-center">
 
                 {
-                    loggedInUser ? <button onClick={handleSignOut} className="bg-main text-white px-4 py-2 text-[14px] font-medium rounded-lg hover:text-main hover:bg-[white] duration-300">Sign out</button> :
+                    currentUser ?
+                        <div className="flex justify-end items-center gap-x-3">
+                            <img src={currentUser?.photoURL} alt="" className="w-[35px] h-[35px] rounded-full bg-cover"/>
+                            <p className="text-[12px] md:text-[13px] lg:text-[14px] font-semibold text-[gray]">{currentUser?.displayName}</p>
+                            <button onClick={handleSignOut} className="bg-main text-white px-4 py-2 text-[14px] font-medium rounded-lg hover:text-main hover:bg-[white] duration-300">Sign out</button>
+                        </div>
+                        :
                         <div>
                             <Link to="/login"><button className="bg-main text-white px-4 py-2 text-[14px] font-medium rounded-l-lg hover:text-main hover:bg-[white] duration-300">Login</button></Link>
                             <Link to="/signup"><button className="bg-main text-white px-4 py-2 text-[14px] font-medium rounded-r-lg border-l-[1px] border-[#868686] hover:text-main hover:bg-[white] duration-300">Sign up</button></Link>

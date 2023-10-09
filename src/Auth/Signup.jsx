@@ -7,25 +7,36 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 
-
-
 const Signup = () => {
 
-    const { createNewUser, createNewUserByGoogle } = useContext(AuthContext);
+    //Context declaration
+
+    const { createNewUser, createNewUserByGoogle, updateProfileInfo } = useContext(AuthContext);
 
 
+
+    // State declaration
     const [showPassword, setShowPassword] = useState(false);
     const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
 
+
+
+    // Toggle between show password and hide password
 
     const handleShowPassword = () => {
         setShowPassword(!showPassword)
     };
 
+
+
+    //Sign up using email-password
+
     const handleSignUp = e => {
         e.preventDefault();
+        const username = e.target.username.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
+        const photo = e.target.image.value;
 
         const regExPattern = /^(?=.*[A-Z])(?=.*[\W_]).{6,}$/;
 
@@ -39,13 +50,18 @@ const Signup = () => {
         createNewUser(email, password)
             .then(result => {
                 successNotify();
-                console.log(result.user)
+                const currentUsersInfo = result.user;
+                updateProfileInfo(currentUsersInfo, username, photo)
             })
             .catch(error => {
                 failedNotify();
                 console.log(error.code)
             });
     };
+
+
+    
+    //Sign up using Google
 
     const handleGoogleSignIn = () => {
         createNewUserByGoogle()
@@ -59,6 +75,10 @@ const Signup = () => {
             })
     }
 
+
+
+    // Account create success message
+
     const successNotify = () => toast.success('Account creation successfull', {
         position: "top-center",
         autoClose: 1500,
@@ -70,6 +90,10 @@ const Signup = () => {
         theme: "colored",
         transition: Zoom,
     });
+
+
+
+    // Account creation failure message
 
     const failedNotify = () => toast.error('Account creation failed', {
         position: "top-center",
@@ -84,6 +108,11 @@ const Signup = () => {
     });
 
 
+
+
+
+
+
     return (
         <div className="container mx-auto p-5">
 
@@ -93,13 +122,13 @@ const Signup = () => {
                 <form onSubmit={handleSignUp} className="flex flex-col justify-center items-center w-full md:w-2/3 lg:w-1/3 space-y-7 lg:space-y-10 px-10">
                     <input type="text" name="name" placeholder="Full name" id="name" className="focus:outline-none border-b-[1px] pb-2 border-[lightgray] focus:border-main  transition-all duration-500 w-full" />
 
-                    <input type="email" name="email" placeholder="Email address" id="eamil" className="focus:outline-none border-b-[1px] pb-2 border-[lightgray] focus:border-main  transition-all duration-500 w-full" />
+                    <input required type="email" name="email" placeholder="Email address" id="eamil" className="focus:outline-none border-b-[1px] pb-2 border-[lightgray] focus:border-main  transition-all duration-500 w-full" />
 
-                    <input type="text" name="username" placeholder="Username" id="username" className="focus:outline-none border-b-[1px] pb-2 border-[lightgray] focus:border-main  transition-all duration-500 w-full" />
+                    <input required type="text" name="username" placeholder="Username" id="username" className="focus:outline-none border-b-[1px] pb-2 border-[lightgray] focus:border-main  transition-all duration-500 w-full" />
 
                     <div className="w-full">
                         <div className="flex relative w-full justify-center items-center">
-                            <input type={showPassword ? "text" : "password"} name="password" placeholder="Password" id="password" className="focus:outline-none border-b-[1px] pb-2 border-[lightgray] focus:border-main  transition-all duration-500 w-full" />
+                            <input required type={showPassword ? "text" : "password"} name="password" placeholder="Password" id="password" className="focus:outline-none border-b-[1px] pb-2 border-[lightgray] focus:border-main  transition-all duration-500 w-full" />
                             <span onClick={handleShowPassword} className="absolute right-2 text-[gray]"> {showPassword ? <BsFillEyeSlashFill /> : <BsFillEyeFill />} </span>
                         </div>
                         {
@@ -107,7 +136,7 @@ const Signup = () => {
                         }
                     </div>
 
-                    <input type="file" name="image" accept="image/*" id="image" className="focus:outline-none border-b-[1px] pb-2 border-[lightgray] focus:border-main  transition-all duration-500" />
+                    <input required type="file" name="image" accept="image/*" id="image" className="focus:outline-none border-b-[1px] pb-2 border-[lightgray] focus:border-main  transition-all duration-500" />
 
                     <input type="submit" value="Sign up" className="bg-main px-4 py-2 rounded text-white font-medium hover:bg-sub duration-300 w-full" />
 
