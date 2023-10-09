@@ -10,14 +10,12 @@ const EventDetails = () => {
     const { websiteContents, loading } = useContext(ContentContext);
 
     if (loading) {
-        return <span className="loading loading-dots loading-lg"></span>
+        return <span className="loading loading-dots loading-lg container mx-auto flex justify-center items-center h-[100vh]"></span>
     }
 
     const currentContent = websiteContents.find(currentContent => currentContent.path === id);
 
     const { name, article_img, price, place, long_desc } = currentContent;
-
-    console.log(article_img);
 
 
     return (

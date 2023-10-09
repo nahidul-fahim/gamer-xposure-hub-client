@@ -9,7 +9,7 @@ const ChooseService = () => {
     const {websiteContents, loading} = useContext(ContentContext);
 
     if (loading) {
-        return <span className="loading loading-dots loading-lg"></span>
+        return <span className="loading loading-dots loading-lg container mx-auto flex justify-center items-center h-[100vh]"></span>
     }
 
 

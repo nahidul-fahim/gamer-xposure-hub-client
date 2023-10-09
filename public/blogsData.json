@@ -1,0 +1,74 @@
+[
+    {
+      "id": 1,
+      "image": "https://i.ibb.co/V0y3RX2/car-game.png",
+      "name": "The Rise of Esports in 2023",
+      "description": "Explore the rapid growth of esports in 2023, with insights into new game titles, emerging talent, and the increasing mainstream recognition of competitive gaming.",
+      "writer": "John Doe",
+      "date": "January 9, 2023",
+      "tags": "Esports, Gaming, 2023 Trends"
+    },
+    {
+      "id": 2,
+      "image": "https://i.ibb.co/MN1g9jv/soccer-game.png",
+      "name": "The Evolution of Gaming Consoles",
+      "description": "Discover the evolution of gaming consoles, from the early days of Atari to the latest innovations in hardware, including insights into upcoming releases.",
+      "writer": "Jane Smith",
+      "date": "February 15, 2023",
+      "tags": "Gaming, Gaming Tech, Console History"
+    },
+    {
+      "id": 3,
+      "image": "https://i.ibb.co/V0y3RX2/car-game.png",
+      "name": "Top 10 Must-Play Esports Games",
+      "description": "Check out our list of the top 10 must-play esports games, featuring thrilling gameplay, competitive scenes, and opportunities for aspiring pro players.",
+      "writer": "Alex Johnson",
+      "date": "March 5, 2023",
+      "tags": "Esports, Gaming, Top Games"
+    },
+    {
+      "id": 4,
+      "image": "https://i.ibb.co/ZJ2jCr5/cod-game.png",
+      "name": "Gaming Tech Innovations in 2023",
+      "description": "Stay updated on the latest gaming tech innovations in 2023, from graphics cards and VR headsets to gaming laptops and streaming accessories.",
+      "writer": "Emily Davis",
+      "date": "April 18, 2023",
+      "tags": "Gaming Tech, Technology, Innovations"
+    },
+    {
+      "id": 5,
+      "image": "https://i.ibb.co/V0y3RX2/car-game.png",
+      "name": "Esports Championships: A Global Phenomenon",
+      "description": "Explore the global phenomenon of esports championships, featuring interviews with pro players and organizers behind the scenes.",
+      "writer": "Michael Chen",
+      "date": "May 12, 2023",
+      "tags": "Esports, Championships, Competitive Gaming"
+    },
+    {
+      "id": 6,
+      "image": "https://i.ibb.co/wrqKGFV/pubg-game.png",
+      "name": "The Impact of Gaming on Mental Health",
+      "description": "Examine the complex relationship between gaming and mental health, discussing both the positive and negative aspects of gaming on well-being.",
+      "writer": "Sarah Wilson",
+      "date": "June 25, 2023",
+      "tags": "Gaming, Mental Health, Well-being"
+    },
+    {
+      "id": 7,
+      "image": "https://i.ibb.co/ZJ2jCr5/cod-game.png",
+      "name": "The Future of Augmented Reality in Gaming",
+      "description": "Get a glimpse into the future of gaming with augmented reality (AR) technology, exploring potential game-changing experiences.",
+      "writer": "David Lee",
+      "date": "July 8, 2023",
+      "tags": "Gaming Tech, AR Gaming, Future"
+    },
+    {
+      "id": 8,
+      "image": "https://i.ibb.co/MN1g9jv/soccer-game.png",
+      "name": "Esports: Breaking Gender Barriers",
+      "description": "Learn about the efforts and achievements in breaking gender barriers in esports, with stories of female gamers and industry pioneers.",
+      "writer": "Emma Martinez",
+      "date": "August 19, 2023",
+      "tags": "Esports, Gender Equality, Diversity"
+    }
+  ]  

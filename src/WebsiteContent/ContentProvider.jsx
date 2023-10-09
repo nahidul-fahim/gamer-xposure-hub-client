@@ -9,6 +9,7 @@ export const ContentContext = createContext('');
 const ContentProvider = ({children}) => {
 
     const [websiteContents, setWebsiteContents] = useState('');
+    const [blogData, setBlogData] = useState('');
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -20,8 +21,17 @@ const ContentProvider = ({children}) => {
         })
     }, [])
 
+    useEffect(() => {
+        fetch('blogsData.json')
+        .then(res => res.json())
+        .then(data => {
+            setBlogData(data);
+            setLoading(false);
+        })
+    }, [])
 
-    const contentInfo = {websiteContents, loading};
+
+    const contentInfo = {websiteContents, blogData, loading};
 
     return (
         <ContentContext.Provider value={contentInfo}>

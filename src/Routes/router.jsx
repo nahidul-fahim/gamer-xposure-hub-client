@@ -5,6 +5,8 @@ import Root from "../Components/Layout/Root";
 import Signup from "../Auth/Signup";
 import Login from "../Auth/Login";
 import EventDetails from "../Pages/EventDetails/EventDetails";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Blog from "../Pages/Blog/Blog";
 
 const router = createBrowserRouter([
     {
@@ -18,7 +20,7 @@ const router = createBrowserRouter([
         },
         {
           path: "/:id",
-          element: <EventDetails />,
+          element: <PrivateRoute><EventDetails /></PrivateRoute>,
         },
         {
           path: "/signup",
@@ -27,6 +29,10 @@ const router = createBrowserRouter([
         {
           path: "/login",
           element: <Login />
+        },
+        {
+          path: "/blog",
+          element: <PrivateRoute><Blog /></PrivateRoute>
         }
       ]
     },

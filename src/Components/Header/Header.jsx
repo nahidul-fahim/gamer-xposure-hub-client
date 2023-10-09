@@ -21,7 +21,8 @@ const Header = () => {
     }
 
     const links = <>
-        <NavLink className={`${location.pathname === "/login" || location.pathname === "/signup" ? "text-black" : "text-white"} font-bold`}>Home</NavLink>
+        <NavLink className={`${location.pathname === "/login" || location.pathname === "/signup" ? "lg:text-black" : "lg:text-white"} font-bold`}>Home</NavLink>
+        <NavLink to="/blog" className={`${location.pathname === "/login" || location.pathname === "/signup" ? "lg:text-black" : "lg:text-white"} font-bold`}>Blog</NavLink>
     </>;
 
 
@@ -56,14 +57,14 @@ const Header = () => {
                             <label tabIndex={0} className="btn btn-ghost lg:hidden">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                             </label>
-                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 space-y-5">
                                 {links}
                             </ul>
                         </div>
                         <img className="w-[50%] md:w-[30%] lg:w-[20%]" src={location.pathname === "/login" || location.pathname === "/signup" ? "https://i.ibb.co/dfpYy8y/G-1.png" : "https://i.ibb.co/m5dmMjf/logo.png"} alt="website logo" />
                     </div>
                     <div className="navbar-end hidden lg:flex">
-                        <ul className="menu menu-horizontal px-1">
+                        <ul className="menu menu-horizontal px-1 space-x-8">
                             {links}
                         </ul>
                     </div>

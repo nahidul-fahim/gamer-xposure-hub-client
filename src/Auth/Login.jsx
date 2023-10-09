@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BsFillEyeFill, BsFillEyeSlashFill, BsGoogle } from 'react-icons/bs';
 import { useContext, useState } from "react";
 import { AuthContext } from "../Context/AuthProvider";
@@ -12,6 +12,10 @@ const Login = () => {
     const { createNewUserByGoogle, accessExistingUser } = useContext(AuthContext);
 
     const [showPassword, setShowPassword] = useState(false);
+
+    const location = useLocation();
+    console.log(location);
+    const navigate = useNavigate()
 
 
     // Toggle between show password and hide password
@@ -32,6 +36,9 @@ const Login = () => {
                 const successfulLogin = result.user;
                 successNotify();
                 console.log(successfulLogin);
+
+                // Redirect to path after login
+                navigate(location?.state ? location.state : "/")
             })
             .catch(error => {
                 const errorMessage = error.message;
@@ -49,6 +56,9 @@ const Login = () => {
             .then(result => {
                 successNotify();
                 console.log(result.user)
+
+                // Redirect to path after login
+                navigate(location?.state ? location.state : "/")
             })
             .catch(error => {
                 googleFailedNotify();
